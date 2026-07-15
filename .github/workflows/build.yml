@@ -31,6 +31,17 @@ jobs:
           VERSION=$(node -p "require('./open-design/package.json').version")
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
       -
+        name: Add opencode CLI to runtime image
+        run: |
+          cat >> open-design/deploy/Dockerfile <<'EOF'
+
+          USER root
+          RUN npm install -g opencode-ai@latest && \
+              opencode --version && \
+              npm cache clean --force
+          USER open-design
+          EOF
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v4
       -

@@ -3,6 +3,7 @@
 [![Build](https://github.com/gsmlg-ci/open-design/actions/workflows/build.yml/badge.svg)](https://github.com/gsmlg-ci/open-design/actions/workflows/build.yml)
 
 Docker image for [nexu-io/open-design](https://github.com/nexu-io/open-design), built from the upstream `deploy/Dockerfile`.
+This image adds the `opencode` CLI from the `opencode-ai` npm package.
 
 Docker image published to:
 - `docker.io/gsmlg/open-design`
@@ -22,6 +23,12 @@ Open Design listens on port `7456` by default.
 
 ```bash
 docker run --rm -p 127.0.0.1:7456:7456 gsmlg/open-design:latest
+```
+
+Verify the bundled OpenCode CLI:
+
+```bash
+docker run --rm gsmlg/open-design:latest opencode --version
 ```
 
 ## Build
